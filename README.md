@@ -1,2 +1,2 @@
 # javascript
-javascript coding projects
+JS - javascript coding projects
