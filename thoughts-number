@@ -1,0 +1,115 @@
+// Allrights Reserved - Bernat Ferragut Design 2016 - MIT LICENCE
+// SUPER FUNCTION TO CALCULATE A MAGIC VORTEX MATH NUMBER BETWEEN 0 AND 9 FOR ANY THOUGHT YOU MIGHT HAVE!
+function myFunction() {
+  // Take the DATA from the user
+  var data = prompt("Enter a word or phrase from your heart: ");
+
+  if (data != null) {
+    // to lower characters
+    var lowerchar = data.toLowerCase();
+    // regex extracts characters other than [a-z]
+    var cleaned = lowerchar.replace(/[^a-z]+/g, '');
+    // split the cleaned string into an array
+    var letters = cleaned.split("");
+    // count letters through an associative array
+    var counter = {}
+    for (var i = 0; i < letters.length; i++) {
+      if (counter[letters[i]] == undefined)
+        counter[letters[i]] = 0;
+      counter[letters[i]]++;
+    }
+    // Quality number list OR numeric Reduction of letters
+    var listNumber = [];
+    var val;
+    var n;
+    for (var k in counter) {
+      if (k === 'a' || k === 'n' || k === 'm' || k === 'z') {
+        val = 1;
+        n = val * counter[k];
+        listNumber.push(n);
+        //console.log(listNumber);
+      } else if (k == 'b' || k == 'o' || k == 'l' || k == 'y') {
+        val = 2;
+        n = val * counter[k];
+        listNumber.push(n);
+        //console.log(listNumber);
+      }
+      if (k == 'c' || k == 'p' || k == 'k' || k == 'x') {
+        val = 3;
+        n = val * counter[k];
+        listNumber.push(n);
+        //console.log(listNumber)
+      }
+      if (k == 'd' || k == 'q' || k == 'j' || k == 'w') {
+        val = 4;
+        n = val * counter[k];
+        listNumber.push(n);
+        //console.log(listNumber)
+      }
+      if (k == 'e' || k == 'r' || k == 'i' || k == 'v') {
+        val = 5;
+        n = val * counter[k];
+        listNumber.push(n);
+        //console.log(listNumber)
+      }
+      if (k == 'f' || k == 's' || k == 'h' || k == 'u') {
+        val = 6;
+        n = val * counter[k];
+        listNumber.push(n);
+        //console.log(listNumber)
+      }
+      if (k == 'g' || k == 't') {
+        val = 7;
+        n = val * counter[k];
+        listNumber.push(n);
+        //console.log(listNumber)
+      }
+    }
+
+  }
+  console.log("LIST NUMBER: " + listNumber);
+  //1st reduction
+  var nsum = listNumber.reduce((a, b) => a + b, 0);
+  // logout to console
+  console.log("A: ", nsum);
+  //2nd reduction
+  if (nsum > 9) {
+    while (nsum > 9) {
+
+      var nsum = nsum.toString().split('');
+      nsum = nsum.map(parseFloat);
+      console.log("B: ", nsum);
+      var nsum = nsum.reduce((a, b) => a + b, 0);
+      console.log("C: ", nsum);
+    };
+  }
+  // logout to console
+  console.log("FINAL: ", nsum);
+  document.getElementById('response').innerHTML = nsum;
+
+  var newnum = nsum;
+  console.log("new_num", newnum);
+
+  if (newnum === 1) {
+    var advice = 'FAITH OR GREED '
+  } else if (newnum === 2) {
+    var advice = 'HOPE OR LUST'
+  } else if (newnum === 3) {
+    var advice = 'CHARITY OR AVARICE'
+  } else if (newnum === 4) {
+    var advice = 'JUSTICE OR PRIDE'
+  } else if (newnum === 5) {
+    var advice = 'PRUDENCE OR SLOTH'
+  } else if (newnum === 6) {
+    var advice = 'FORTITUDE OR ENVY '
+  } else if (newnum === 7) {
+    var advice = 'TEMPERANCE OR ANGER'
+  } else if (newnum === 8) {
+    var advice = 'CHANGE AND CHANGE'
+  } else if (newnum === 9) {
+    var advice = 'WISDOM AND PERFECTION'
+  }
+
+  document.getElementById('advice').innerHTML = advice;
+
+}
