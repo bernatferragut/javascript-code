@@ -1,0 +1,3 @@
+// TS transpiler
+
+class myApp {}
